@@ -32,8 +32,8 @@ async function hydrate (stream, max, json) {
     }
     if (--max <= 0) break
   }
-  stream.push(']')
-  stream.push(null)
+  if (json) stream.push(']')
+  stream.end()
 }
 
 // output may be "HTML" or "objects"
