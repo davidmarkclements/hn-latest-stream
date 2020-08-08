@@ -12,5 +12,8 @@
   "dependencies": {
     "got": "^11.5.2",
     "readable-stream": "^3.6.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
   }
 }
