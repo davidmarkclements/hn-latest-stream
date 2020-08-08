@@ -1,7 +1,7 @@
 {
   "name": "hn-latest-stream",
   "version": "1.0.0",
-  "description": "",
+  "description": "> hackernews stream of latest stories as JSON or HTML",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,13 @@
   },
   "devDependencies": {
     "standard": "^14.3.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidmarkclements/hn-latest-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidmarkclements/hn-latest-stream/issues"
+  },
+  "homepage": "https://github.com/davidmarkclements/hn-latest-stream#readme"
 }
