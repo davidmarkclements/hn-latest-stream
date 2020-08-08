@@ -1,5 +1,4 @@
 'use strict'
-const { promisify } = require('util')
 const stream = require('readable-stream')
 const got = require('got')
 
@@ -21,17 +20,21 @@ function htmlify (story) {
 
 async function hydrate (stream, max, json) {
   const stories = await got(`${base}/newstories.json`).json()
+  let comma = ''
   if (json) stream.push('[')
   for (const id of stories) {
     const story = await got(`${base}/item/${id}.json`).json()
-    if (json) stream.push(JSON.stringify(story))
-    else stream.push(htmlify(story))
+    if (json) {
+      stream.push(comma + JSON.stringify(story))
+      comma = ','
+    } else {
+      stream.push(htmlify(story))
+    }
     if (--max <= 0) break
   }
   stream.push(']')
   stream.push(null)
 }
-
 
 // output may be "HTML" or "objects"
 // if objects then the stream is an object mode stream
@@ -45,13 +48,11 @@ function hnLatestStream (max = 10, output = 'html') {
   }
   const json = output === 'json'
   const stream = PassThrough()
-  
+
   hydrate(stream, max, json).catch((err) => {
     stream.emit('error', err)
   })
   return stream
 }
-
-
 
 module.exports = hnLatestStream
