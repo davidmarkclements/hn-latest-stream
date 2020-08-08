@@ -1,6 +1,6 @@
 {
   "name": "hn-latest-stream",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> hackernews stream of latest stories as JSON or HTML",
   "main": "index.js",
   "scripts": {
